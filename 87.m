@@ -15,7 +15,7 @@ degr:=hom<C->Z | [ Degree(phi(a))*Z.1 : a in OrderedGenerators(C)]>;
 A:=Kernel(degr);
 divs0:=[psi(D-Degree(D)*P0) : D in divs];
 Ksub1:=sub<A | divs0>;
-r:=#pls;
+r:=#divs;
 inds:=[i : i in [1..r]];
 i:=r+1;
 repeat
@@ -74,10 +74,11 @@ N:=87;
 p:=5;
 X, _, _, _, cusp := eqs_quos(N, []);
 Xp:=ChangeRing(X,GF(5));
-T:=[[1 , 0 , 0 , 0 , 0 , 1 , 0 , 1 , 0],[-1 , 0 , 0 , 0 , 0 , 1 , 0 , 1 , 0], [1 , 0 , 0 , 0 , 0 , 1 , 0 , -1 , 0], [-1 , 0 , 0 , 0 , 0 , 1 , 0 , 1 , 0] ];
+T:=[[1 , 0 , 0 , 0 , 0 , 1 , 0 , 1 , 0],[-1 , 0 , 0 , 0 , 0 , 1 , 0 , 1 , 0], [1 , 0 , 0 , 0 , 0 , 1 , 0 , -1 , 0], [-1 , 0 , 0 , 0 , 0 , 1 , 0 , -1 , 0] ];
 pts := [ Xp ! a : a in T];
 pls := [ Place(a) : a in pts];
 gens,invs:=gensfp(Xp,pls);
+assert invs eq [14,140]; // J_C(87)(Q) = Z/14 x Z/140, as claimed in the paper
 counter:=0;
 current:=[];
 RRCheck(#invs, invs, current, gens, pls[1], ~counter);

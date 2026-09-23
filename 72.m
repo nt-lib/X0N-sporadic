@@ -16,8 +16,6 @@ printf "Nice model for X_0(%o) is: %o\n\n", N, XN;
 XN_Cusps := compute_cusps(XN, N, ws, cuspInf, num_denom);
 
 ListOfDivs := [Q : Q in Divisors(N) | GCD(Q, ExactQuotient(N,Q)) eq 1 and Q ne 1];
-wd := ws[Index(ListOfDivs, d)];
-printf "w_%o on X_0(%o) is given by: %o\n", d, N, wd;
 printf "Genus of X_0(%o) is %o\n", N, Genus(XN);
 printf "We have found these %o cusps on X_0(%o):\n%o\n", #XN_Cusps, N, XN_Cusps;
 

@@ -1,8 +1,8 @@
 // We construct X_0(144) as a fiber product of X_0(9) and X_0(16)
 // j-map on X_0(9) https://beta.lmfdb.org/ModularCurve/Q/9.12.0.a.1/
 // j9 := x^3*(x^3-24)^3 / ((x-3)*(x^2+3*x+9))
-// j-map on X_0(8) https://beta.lmfdb.org/ModularCurve/Q/16.24.0.g.1/
-// j8 := (y^4-16*y^2+16)^3 / (y^2 * (y-4) * (y+4))
+// j-map on X_0(16) https://beta.lmfdb.org/ModularCurve/Q/16.24.0.g.1/
+// j16 := (y^4-16*y^2+16)^3 / (y^2 * (y-4) * (y+4))
 
 
 A<x,y> := AffineSpace(GF(5),2);
@@ -68,7 +68,7 @@ Jc, toJ := sub< J | [DivToJ(c)-Degree(c)*D0 : c in cusp_orbits]>;//This is the i
 
 plc := [Places(C, i) : i in [1..4]];
 divs1111:={SequenceToMultiset([c1,c2,c3,c4]):c1,c2,c3,c4 in plc[1]|DivToJ(c1+c2+c3+c4-4*P0) in Jc};
-#divs1111; //237
+#divs1111; //405
 divs211:={SequenceToMultiset([c1,c2,c3]):c1 in plc[2], c2,c3 in plc[1]|DivToJ(c1+c2+c3-4*P0) in Jc};
 #divs211; //152
 divs22:={SequenceToMultiset([c1,c2]):c1,c2 in plc[2]|DivToJ(c1+c2-4*P0) in Jc};

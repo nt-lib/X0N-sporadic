@@ -1,4 +1,5 @@
-// The code in this file proves the claims made in the first  paragraph of Proposition 8.1
+// The code in this file proves that there are no non-cuspidal points of degree 3 on X_0(N) for N = 60, 70, 80, 94, 96,
+// by showing that no cubic point on X_0(N/2) lifts to X_0(N). See the corresponding proposition in the paper.
 // Parts of the code were provided to us by Petar Orlić from a different unpublished project. 
 
 
@@ -139,9 +140,9 @@ Y:=HyperellipticCurve( -x^7 - 2*x^6 - x^5 -3*x^4 + x^3 - 2*x^2 + x, -x^4 - x^2 -
  ptsJ:=[ p-p0 : p in ptsY   ];
  
 J11:=BaseChange(J,GF(11));
-B,mu:=AbelianGroup(J3);
+B,mu:=AbelianGroup(J11);
 A:=FreeAbelianGroup(4);
-eps:=hom<A->B | [ (J3!Q)@@mu : Q in ptsJ  ] >;
+eps:=hom<A->B | [ (J11!Q)@@mu : Q in ptsJ  ] >;
 C:=Image(eps);
 
 Q1:=ptsJ[2];
@@ -182,7 +183,7 @@ Append(~deg3new,decomp[1,1]);
 end if;
 end for;
 
-assert #deg3new eq 32;
+assert #deg3new eq 28;
 
 
 
@@ -214,7 +215,7 @@ end for;
 /////////////////////////////////////////////////////////////
 
 
-X_0(40):
+// X_0(40):
 
 Qx<x>:=PolynomialRing(Rationals());
 
