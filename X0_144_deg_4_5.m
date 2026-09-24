@@ -2,7 +2,7 @@
 // j-map on X_0(9) https://beta.lmfdb.org/ModularCurve/Q/9.12.0.a.1/
 // j9 := x^3*(x^3-24)^3 / ((x-3)*(x^2+3*x+9))
 // j-map on X_0(16) https://beta.lmfdb.org/ModularCurve/Q/16.24.0.g.1/
-// j16 := (y^4-16*y^2+16)^3 / (y^2 * (y-4) * (y+4))
+// j16 := (y^8-16*y^4+16)^3 / (y^4 * (y^4-16))
 
 
 A<x,y> := AffineSpace(GF(5),2);

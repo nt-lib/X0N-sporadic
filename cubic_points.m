@@ -49,7 +49,7 @@ assert #cuspGpElts eq 24*4*2;
 
 D1:=Place(ptsY[4])-Place(ptsY[1]);
 D2:=Place(ptsY[7])-Place(ptsY[1]);
-D3:=2*Place(ptsY[5])-2*Place(ptsY[1]);
+D3:=3*Place(ptsY[5])-3*Place(ptsY[1]);
 
 infdiv:=3*Place(ptsY[1]);
 
@@ -74,6 +74,7 @@ end if;
 end for;
 
 assert #deg3new eq 48;
+assert #Seqset(deg3new) eq #deg3new; // the places found are pairwise distinct
 real:=0;
 complex:=0;
 
@@ -91,10 +92,11 @@ assert real eq 16;
 assert complex eq 32;
 
 for a in deg3new do
-	K<w>:=ResidueClassField(a);
-	P:=RepresentativePoint(deg3new[1]);
+	aX:=Support(Pullback(phi,Divisor(a)))[1]; // the place of X corresponding to a under the isomorphism phi: X -> Y
+	assert Degree(aX) eq 3;
+	K:=ResidueClassField(aX);
 	XK:=ChangeRing(X,K);
-	Q:=Points(XK,w)[1];
+	Q:=XK!Eltseq(RepresentativePoint(aX));
 	j:=jInvariant(Q,30);
 	E:=EllipticCurveFromjInvariant(j);
 	ck:=Degree(Factorization(DivisionPolynomial(E,4) div DivisionPolynomial(E,2))[1,1]); //If E had an isogeny of degree 4, then this polynomial would have a linear factor.
@@ -184,14 +186,16 @@ end if;
 end for;
 
 assert #deg3new eq 28;
+assert #Seqset(deg3new) eq #deg3new; // the places found are pairwise distinct
 
 
 
 for a in deg3new do
-	K<w>:=ResidueClassField(a);
-	P:=RepresentativePoint(deg3new[1]);
+	aX:=Support(Pullback(phi,Divisor(a)))[1]; // the place of X corresponding to a under the isomorphism phi: X -> Y
+	assert Degree(aX) eq 3;
+	K:=ResidueClassField(aX);
 	XK:=ChangeRing(X,K);
-	Q:=Points(XK,w)[1];
+	Q:=XK!Eltseq(RepresentativePoint(aX));
 	j:=jInvariant(Q,35);
 	E:=EllipticCurveFromjInvariant(j);
 	assert #TwoTorsionSubgroup(E) eq 1;//So there are no isogenies of degree 2
@@ -289,6 +293,7 @@ end if;
 end for;
 
 assert #deg3new eq 32;
+assert #Seqset(deg3new) eq #deg3new; // the places found are pairwise distinct
 
 for D in deg3new do
 K:=ResidueClassField(D);
@@ -300,10 +305,11 @@ end for;
 
 
 for a in deg3new do
-	K<w>:=ResidueClassField(a);
-	P:=RepresentativePoint(deg3new[1]);
+	aX:=Support(Pullback(phi,Divisor(a)))[1]; // the place of X corresponding to a under the isomorphism phi: X -> Y
+	assert Degree(aX) eq 3;
+	K:=ResidueClassField(aX);
 	XK:=ChangeRing(X,K);
-	Q:=Points(XK,w)[1];
+	Q:=XK!Eltseq(RepresentativePoint(aX));
 	j:=jInvariant(Q,40);
 	E:=EllipticCurveFromjInvariant(j);
 	_<y>:=PolynomialRing(K);
@@ -396,9 +402,9 @@ pts:=Points(XK:Bound:=10);
 j1:=jInvariant(pts[3],47);
 E1:=EllipticCurveFromjInvariant(j1);
 j2:=jInvariant(pts[4],47);
-E2:=EllipticCurveFromjInvariant(j1);
-assert j1 ne j2; //These are the only 2 deg3 j-invariants on X0(47) 
-assert #TwoTorsionSubgroup(E2) eq 1;
+E2:=EllipticCurveFromjInvariant(j2);
+assert j1 ne j2 and j1 notin Rationals() and j2 notin Rationals(); //These are the only 2 deg3 j-invariants on X0(47) 
+assert #TwoTorsionSubgroup(E1) eq 1;
 assert #TwoTorsionSubgroup(E2) eq 1;
 //done, so neither of these points lift to X0(94)
 
@@ -460,6 +466,7 @@ end if;
 end for;
 
 assert #deg3new eq 16;
+assert #Seqset(deg3new) eq #deg3new; // the places found are pairwise distinct
 
 for D in deg3new do
 K:=ResidueClassField(D);
@@ -472,10 +479,11 @@ end for;
 
 
 for a in deg3new do
-	K<w>:=ResidueClassField(a);
-	P:=RepresentativePoint(deg3new[1]);
+	aX:=Support(Pullback(phi,Divisor(a)))[1]; // the place of X corresponding to a under the isomorphism phi: X -> Y
+	assert Degree(aX) eq 3;
+	K:=ResidueClassField(aX);
 	XK:=ChangeRing(X,K);
-	Q:=Points(XK,w)[1];
+	Q:=XK!Eltseq(RepresentativePoint(aX));
 	j:=jInvariant(Q,48);
 	E:=EllipticCurveFromjInvariant(j);
 	_<y>:=PolynomialRing(K);
