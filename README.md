@@ -4,12 +4,12 @@ This repository contains the code accompanying the paper
 
 Maarten Derickx and Filip Najman, *Sporadic points on X_0(N)*, [arXiv:2511.09015](https://arxiv.org/abs/2511.09015),
 
-in which we determine the exact list of modular curves X_0(N) that have a sporadic point. The computations below are the ones summarised in Table 1 of the paper.
+in which we determine the exact list of modular curves X_0(N) that have a sporadic point. The computations below are the ones summarised in Table 1 of the paper. References in square brackets, such as [DEvH⁺21] and [DO24], are to the bibliography of the paper.
 
 ## Dependencies
 
 * [Magma](http://magma.maths.usyd.edu.au/magma/) for the `.m` files. The computations in the paper were run with Magma V2.28-3 and the files were re-run with V2.29-4. The file `cubic_points.m` uses Magma's Small Modular Curves database (`SmallModularCurve`), which is part of the standard distribution. No packages outside the standard distribution are needed.
-* [SageMath](https://www.sagemath.org/) with Jupyter for `involutions.ipynb` and for `prop_5_3.py`. The paper used SageMath 10.6 and the files were re-run with SageMath 10.7. The notebook uses only the modular symbols functionality that ships with SageMath. The file `prop_5_3.py` also needs the package [mdsage](https://github.com/koffie/mdsage) (version 0.1.0) by M. Derickx, which implements the methods of [DEvH⁺21, Section 4] and is installed with `sage -pip install git+https://github.com/koffie/mdsage.git@v0.1.0`.
+* [SageMath](https://www.sagemath.org/) with Jupyter for `involutions.ipynb`, and for `prop_5_3.py` and `quadratic_forms.py`. The paper used SageMath 10.6 and the files were re-run with SageMath 10.7. The notebook uses only the modular symbols functionality that ships with SageMath. The files `prop_5_3.py` and `quadratic_forms.py` also need the package [mdsage](https://github.com/koffie/mdsage) (version 0.1.0) by M. Derickx, which implements the methods of [DEvH⁺21, Section 4] and [DO24, Section 2] and is installed with `sage -pip install git+https://github.com/koffie/mdsage.git@v0.1.0`. If the SageMath installation is not writable, clone that tag of mdsage and put the clone on `PYTHONPATH` instead.
 * `models_and_maps.m` and `rank_0_auxiliary.m` are verbatim copies of the files of the same name from the repository accompanying N. Adžaga, T. Keller, P. Michaud-Jacobs, F. Najman, E. Ozman, B. Vukorepa, *Computing quadratic points on modular curves X_0(N)*, Math. Comp. 93 (2024), 1371–1397, namely [michaud-jacobs/QuadraticPoints_fork](https://github.com/michaud-jacobs/QuadraticPoints_fork) at commit `267352126e`. They provide the model of X_0(N), its cusps and its j-map used by `72.m` and `87.m`, and are included here so that this repository is self-contained.
 
 ## Running the code
@@ -25,13 +25,14 @@ The notebook is run with `sage -n jupyter involutions.ipynb` by executing all ce
 
     jupyter nbconvert --to notebook --execute --ExecutePreprocessor.kernel_name=sagemath involutions.ipynb
 
-The file `prop_5_3.py` is run with `sage -python prop_5_3.py`. It also consists of assertions, and prints the groups it computes.
+The files `prop_5_3.py` and `quadratic_forms.py` are run with `sage -python prop_5_3.py` and `sage -python quadratic_forms.py`. They also consist of assertions, and print what they compute. The file `quadratic_forms.py` prints Cremona labels, while the tables in the paper use LMFDB labels: 58a1, 118a1, 142b1, 143a1, 236a1, 88a1, 112a1, 176c1, 200b1, 224a1 are 58.a1, 118.a1, 142.a1, 143.a1, 236.a1, 88.a1, 112.a2, 176.a2, 200.b2, 224.a2.
 
 ## Files and the statements they prove
 
 | File | Statement in the paper | What it checks | Running time |
 |---|---|---|---|
 | `involutions.ipynb` | Propositions 4.5, 4.8 and 4.10 (case (2) of Corollary 4.4 for N = 140, 180, 220, 252, 280, 288 and for N = 360, 440, and the case d = 2 of Corollary 4.9 for N = 720) | The function `B0_as_matrix_group(N)` returns the group B_0(N) of Section 3.1 as a group of matrices acting on the cuspidal modular symbols of weight 2 for Γ_0(N). The last cell runs through all involutions z of B_0(N), computes the genus of X_0(N)/z as half the dimension of the fixed space of z and prints the minimum. The minima are 7, 11, 10, 13, 15, 13 for N = 140, 180, 220, 252, 280, 288, they are 25 for N = 360, 440, and 57 for N = 720. The other functions in the notebook (`B0_as_finitely_presented_group`, `E0_as_permutation_group`) are not used in the paper. | 46 min |
+| `quadratic_forms.py` | Tables 2 and 3 (Propositions 4.5 and 4.8) and Proposition 4.10 | For N ∈ U_6 \ {144} (resp. N ∈ U_8) and every elliptic curve E/Q of positive rank with conductor dividing N and modular degree at most 6 (resp. 8), computes the quadratic form on Hom_Q(J_0(N), E) of [DO24, Section 2] whose values are the degrees of the morphisms X_0(N) → E, and checks that it does not take the value 6 (resp. 8). The forms are those of Tables 2 and 3, and curves of larger modular degree are skipped by Lemma 3.3. For N = 720 it checks that the elliptic curves of positive rank with conductor dividing 720 have modular degree at least 16 (the degrees are 16, 32, 64, 128, 128, 192). | 5 h 47 min |
 | `cubic_points.m` | Proposition 5.2 for N = 60, 70, 80, 94, 96 | For n = N/2 ∈ {30, 35, 40, 47, 48} it runs through J_0(n)(Q), which is finite and generated by the cusps, finds all cubic points on X_0(n) through the Riemann–Roch spaces L(A + 3C) (the classes with l(A + 3C) = 2 are discarded, as they contain no cubic points), and checks that none of the elliptic curves corresponding to the non-cuspidal cubic points has the rational cyclic isogeny (of degree 4, 2, 16, 2 and 32 respectively) needed for the point to lift to X_0(N). | 9 s |
 | `72.m` | Proposition 5.2 for N = 72 | Reduces the cusps of X_0(72) modulo 5, generates the subgroup of J_0(72)(F_5) spanned by them (the reduction of J_C(72)(Q)) and counts the degree 3 classes in it that contain an effective divisor. The count is 152, the number of effective rational cuspidal divisors of degree 3. | 56 s |
 | `87.m` | Proposition 5.2 for N = 87 | The same for X_0(87), where the count is 20. | 35 min |
@@ -39,10 +40,6 @@ The file `prop_5_3.py` is run with `sage -python prop_5_3.py`. It also consists 
 | `X0_144_deg_4_5.m` | Proposition 5.5 | Constructs X_0(144) over F_5 as the fibre product of X_0(9) and X_0(16) over the j-line, generates the reduction of J_C(144)(Q) from the cusps and counts the effective F_5-rational divisors of degree 4 and 5 whose class lies in it. The counts are 568 and 1688, the numbers of effective rational cuspidal divisors of degree 4 and 5. | 2 min 9 s |
 
 The running times are for one core of an AMD EPYC 9175F with Magma V2.29-4 and SageMath 10.7. No Magma file needs more than 250 MB of memory, the notebook needs about 800 MB and `prop_5_3.py` about 300 MB.
-
-## Computations not in this repository
-
-* The quadratic forms on Hom_Q(J_0(N), E) in the two tables of Section 4 were computed by hand following [DO24, Section 2] (M. Derickx, P. Orlić, *Modular curves X_0(N) with infinitely many quartic points*, Res. Number Theory 10 (2024)).
 
 ## License
 
