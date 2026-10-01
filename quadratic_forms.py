@@ -11,6 +11,11 @@
 # at most 6 (resp. 8), the script computes, following [DO24, Section 2], the quadratic form on Hom_Q(J_0(N), E) whose
 # values are the degrees of the morphisms X_0(N) -> E (lines starting with ROW), and checks that it does not take the
 # value 6 (resp. 8). Curves of larger modular degree are skipped by Lemma 3.3 (lines starting with SKIP).
+# The curves are enumerated through modular symbols, one per isogeny class (the curve that is optimal for X_0(M), M the
+# conductor). This suffices: every morphism X_0(M) -> E' to another curve E' in the class factors through the optimal curve E,
+# so the modular degree of E' is at least twice that of E. The optimal curves found have modular degree >= 4 for U_6, >= 8 for U_8
+# and >= 16 for N = 720 (see the moddeg values printed in the ROW and SKIP lines), so the other curves in their classes have
+# modular degree > 6, > 8 and >= 32 respectively.
 # For N = 720 it checks that every elliptic curve of positive rank with conductor dividing 720 has modular degree at
 # least 16, so by Lemma 3.3 there is no morphism X_0(720) -> E of degree 12 to such a curve.
 

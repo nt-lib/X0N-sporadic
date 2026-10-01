@@ -5,7 +5,7 @@
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
-//We will chech for all elliptic curves corresponding to degree 3 points on X0(30), none have an isogeny of degree 4, so do not lift to a degree 3 point on X0(60)
+//We will check for all elliptic curves corresponding to degree 3 points on X0(30), none have an isogeny of degree 4, so do not lift to a degree 3 point on X0(60)
 //////////////////////////////////////////////////////////////////////////////////////////
 Qx<x>:=PolynomialRing(Rationals());
 X:=SmallModularCurve(30);
@@ -114,7 +114,7 @@ end for;
 
 
 ////////////////////////////////////////////////////////////////////////////////
-//We will chech for all elliptic curves corresponding to degree 3 points on X0(35), none have an isogeny of degree 2, so do not lift to a degree 3 point on X0(70). See the case N=30 for a bit more explanation of the code. 
+//We will check for all elliptic curves corresponding to degree 3 points on X0(35), none have an isogeny of degree 2, so do not lift to a degree 3 point on X0(70). See the case N=30 for a bit more explanation of the code. 
 ////////////////////////////////////////////////////////////////////////////////
 Qx<x>:=PolynomialRing(Rationals());
 X:=SmallModularCurve(35);
@@ -216,7 +216,7 @@ end for;
 
 
 //////////////////////////////////////////////////////////////
-//We will chech for all elliptic curves corresponding to degree 3 points on X0(40), none have an isogeny of degree 16, so do not lift to a degree 3 point on X0(80). See the case N=30 for a bit more explanation of the code. 
+//We will check for all elliptic curves corresponding to degree 3 points on X0(40), none have an isogeny of degree 16, so do not lift to a degree 3 point on X0(80). See the case N=30 for a bit more explanation of the code. 
 /////////////////////////////////////////////////////////////
 
 
@@ -331,7 +331,7 @@ end for;
 
 
 //////////////////////////////////////////////////////////////////////////////////////
-//We will chech for all elliptic curves corresponding to degree 3 points on X0(47), none have an isogeny of degree 2, so do not lift to a degree 3 point on X0(94). See the case N=30 for a bit more explanation of the code. 
+//We will check for all elliptic curves corresponding to degree 3 points on X0(47), none have an isogeny of degree 2, so do not lift to a degree 3 point on X0(94). See the case N=30 for a bit more explanation of the code. 
 ////////////////////////////////////////////////////////////////////////////////////
 
 //This fucntion works only for prime level, It computes all the divisor classes in Pic^d X_0(N) and returns their dimensions, and the unique deg d effective divisors in those classes with dimension 1
@@ -395,7 +395,7 @@ print [dim : dim in dims | dim[2] ne 0],[<Discriminant(K),DefiningPolynomial(K)>
     <-883, $.1^3 - 5/2*$.1^2 + 5/2*$.1 + 1/2>,
     <-883, $.1^3 - 5/2*$.1^2 + 5/2*$.1 + 1/2>
 ]
-So we have 3 deg 3 points on X_0(47)
+So we have 2 deg 3 points on X_0(47)
 */
 K:=fields[1];	
 XK:=ChangeRing(SmallModularCurve(47),K);
@@ -411,7 +411,7 @@ assert #TwoTorsionSubgroup(E2) eq 1;
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//We will chech for all elliptic curves corresponding to degree 3 points on X0(48), none have an isogeny of degree 32, so do not lift to a degree 3 point on X0(96).cSimilarly, no points have a degree 9 isogeny, so do not lift to degree 2 points on X0(144). See the case N=30 for a bit more explanation of the code. 
+//We will check for all elliptic curves corresponding to degree 3 points on X0(48), none have an isogeny of degree 32, so do not lift to a degree 3 point on X0(96). Similarly, no points have a degree 9 isogeny, so do not lift to degree 2 points on X0(144). See the case N=30 for a bit more explanation of the code. 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Qx<x>:=PolynomialRing(Rationals());

@@ -2,7 +2,7 @@
 //   N. Ad\v{z}aga, T. Keller, P. Michaud-Jacobs, F. Najman, E. Ozman, B. Vukorepa,
 //   Computing quadratic points on modular curves X_0(N), Math. Comp. 93 (2024), 1371-1397,
 // available at https://github.com/michaud-jacobs/QuadraticPoints_fork (commit 267352126e).
-// It is included here so that this repository is self-contained.
+// It is included here so that 72.m and 87.m do not need files from other repositories.
 // It is used by 72.m and 87.m.
 
 // The functions in this file are auxiliary files used for the rank 0 method
